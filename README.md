@@ -14,3 +14,8 @@ Forward Rendering is the usual type of rendering technique that most engines use
 
 Deffered Rendering is when the rendering is deffered a little bit until all of the geometries have been passed down the pipe. The final image is then made by applying the shading at the end. 
 
+
+My student number ends with an odd number. 
+![Toon Water](https://user-images.githubusercontent.com/72412425/228310081-d6eace47-15e9-4a92-8758-325ec72d3053.png)
+Added the Toon shader to the Water shader to make a toon like water. Added a low poly boat mesh that i found on the asset store to act like that boat that is shown in the pdf. The water shader I used was from the lecture as well as the Toon shader. I combined both shaders to have a Toon like Water shader which i then added to a plane object. 
+
