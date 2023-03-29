@@ -19,3 +19,6 @@ My student number ends with an odd number.
 ![Toon Water](https://user-images.githubusercontent.com/72412425/228310081-d6eace47-15e9-4a92-8758-325ec72d3053.png)
 Added the Toon shader to the Water shader to make a toon like water. Added a low poly boat mesh that i found on the asset store to act like that boat that is shown in the pdf. The water shader I used was from the lecture as well as the Toon shader. I combined both shaders to have a Toon like Water shader which i then added to a plane object. 
 
+I combined the two shaders by copying the LightingToonRamp function from the ToonRamp shader we made in class and pasted it into the water shader that was also made in class. I then added a custom made toon texture and applied it to the disignated texture spot in the material.
+
+
