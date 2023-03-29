@@ -21,4 +21,8 @@ Added the Toon shader to the Water shader to make a toon like water. Added a low
 
 I combined the two shaders by copying the LightingToonRamp function from the ToonRamp shader we made in class and pasted it into the water shader that was also made in class. I then added a custom made toon texture and applied it to the disignated texture spot in the material.
 
+![Screenshot 2023-03-29 103650](https://user-images.githubusercontent.com/72412425/228573793-555e9d95-e3fc-430e-aaa1-d611abcbeb9c.png)
+
+The code takes an input image (RenderTexture Source) and generates a series of lower resolution versions of it. The variable "integerRange" specifies the amount by whihc the resolution is reduced at each step, and specifies how many steps are needed. It then applies a "Blit" operation, which is a type of image processing operation, to copy the input image to the currentDestination. The resulting tecture is then used as the input to the next iteration of the downsampling process. The code uses an array of RenderTextures "Textures" to store the results and then a new RenderTexture "currentDestination" is created to store the downscaled image. If the height scales beloew 2 pixels the downsampling process is stopped. After the downsampling is complete, the code generates a series of higher-resolution vaersions of the image. It does this by applying a "Blit" operation to each texture in the "textures" array, copying the results to the hnext higher resolution texture in the array. The highest resolution texture is copied to the ouput imageimage, the RenderTexture destination using another Blit operation. 
+ 
 
