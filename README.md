@@ -16,8 +16,10 @@ Deffered Rendering is when the rendering is deffered a little bit until all of t
 
 
 My student number ends with an odd number. 
-![Toon Water](https://user-images.githubusercontent.com/72412425/228310081-d6eace47-15e9-4a92-8758-325ec72d3053.png)
-Added the Toon shader to the Water shader to make a toon like water. Added a low poly boat mesh that i found on the asset store to act like that boat that is shown in the pdf. The water shader I used was from the lecture as well as the Toon shader. I combined both shaders to have a Toon like Water shader which i then added to a plane object. 
+
+![Toon Water](https://user-images.githubusercontent.com/72412425/228616157-6af8b96f-16c8-4580-aa3b-ee6853b55c1f.png)
+
+Added the Toon shader to the Water shader to make a toon like water. Added a low poly boat mesh that i found on the asset store to act like that boat that is shown in the pdf. The water shader I used was from the lecture as well as the Toon shader. I combined both shaders to have a Toon like Water shader which i then added to a plane object. I modified the shader so that it can have a sqaure wave to it. 
 
 I combined the two shaders by copying the LightingToonRamp function from the ToonRamp shader we made in class and pasted it into the water shader that was also made in class. I then added a custom made toon texture and applied it to the disignated texture spot in the material.
 
@@ -60,4 +62,19 @@ CPGPROGRAM:
 ![Task 5 #3](https://user-images.githubusercontent.com/72412425/228587858-880be16e-fdb4-47fd-ae43-e5e5aa4fa179.png)
 
 This section is where all the main shader code is defined. It stats with a prgma statement that defines the surface shader model being used, in this case it's CSLamber. It then declares three variable: MainTex, Color, and ShadowColor, which are used to access the values of the corresponding properties defined in the properties section. The struct input defines the inpt data that the shader will recieve for each pixel, in this case the shader receives the UV coordinates for the texture. The LightingCSLambert function calculates the lighting for the object, taking into accoung the surface output, including the albedo colour, and the light direction and attenuation. Lastly the surf function sets the output surface values, including the object's colour based on the texture and the "__Color" property. The code then ands with an ENDCG to indicate the end of the CPGPROGRAM block. Fallback Diffuse indicates the shader to fall back to the built in diffuse shader in case this custom shader is not supported. 
+
+
+For the last task, the shader i chose is the Depth of Field shader and it looks like this
+
+![ss](https://user-images.githubusercontent.com/72412425/228618357-7c8734e2-521c-4883-a0c0-dd56ba9d8684.png)
+
+The shader has three passes that are used in order to get the depth of field effect. The Circle of Confusion Pass, Pre Filter Pass, and finally the Bokeh Pass.
+
+![Screenshot 2023-03-29 141104](https://user-images.githubusercontent.com/72412425/228630084-3f722c30-e87c-4969-b769-5ce0f272b028.png)
+
+The Circle of Confusion Pass calculates the circle of confusion of each pixel in the image, which is the blur radius that will be applied to it. the CoC is calculated based on the distance between the focus plane and each pixel's depth of value.
+
+The Pre Filter Pass applies the pre filter to the image to rteduce any aliasing effects that can occur when the CoC is applied. it uses a 2D texture that contains the CoC values calculated in the previous pass.\
+
+The Bokeh Pass applies the CoC to the image and simulates the lens blur effect. It uses a disk shaped kernel with a configurable number of samples to create the blur effect. The kernel samples are based on the distance from the center of the disk, with closer samples having a greater impact on the final colour value. 
 
