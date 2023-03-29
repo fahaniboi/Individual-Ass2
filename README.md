@@ -36,3 +36,28 @@ This is how the boat looks when the bloom is not in play.
 Added Shadows to the boat for task 4. I did this by using the previously created shadow shader from the lab. 
 
 
+![Task 5 ](https://user-images.githubusercontent.com/72412425/228586196-31c10a31-8780-433f-825e-005085ed8081.png)
+
+The following shader can be broken down into three parts.
+
+PROPERTIES:
+
+![Task 5 #1](https://user-images.githubusercontent.com/72412425/228586270-52880ebf-7e76-4a81-80d8-18aac97a4181.png)
+
+This section defines all the necessary custom properties that can be set for the shader. In this case the properties used are 
+"__Color_":  The main colour of the object which is defaulted to white. 
+"__MainTex": A 2D Texture for the object's base colour. 
+"__ShadowColor": the color of the object's shadow which again is defaulted to white. 
+
+SUBSHADER:
+
+![Task 5 #2](https://user-images.githubusercontent.com/72412425/228587424-30dde282-d450-4ed5-8240-1f1314c51ac0.png)
+
+This section describes the behaviour of the shader during rendering. It includes tags to identify the object as opaque, a level of detail setting, and the CPGPROGRAM block which contains the actual code for the shader. 
+
+CPGPROGRAM:
+
+![Task 5 #3](https://user-images.githubusercontent.com/72412425/228587858-880be16e-fdb4-47fd-ae43-e5e5aa4fa179.png)
+
+This section is where all the main shader code is defined. It stats with a prgma statement that defines the surface shader model being used, in this case it's CSLamber. It then declares three variable: MainTex, Color, and ShadowColor, which are used to access the values of the corresponding properties defined in the properties section. The struct input defines the inpt data that the shader will recieve for each pixel, in this case the shader receives the UV coordinates for the texture. The LightingCSLambert function calculates the lighting for the object, taking into accoung the surface output, including the albedo colour, and the light direction and attenuation. Lastly the surf function sets the output surface values, including the object's colour based on the texture and the "__Color" property. The code then ands with an ENDCG to indicate the end of the CPGPROGRAM block. Fallback Diffuse indicates the shader to fall back to the built in diffuse shader in case this custom shader is not supported. 
+
